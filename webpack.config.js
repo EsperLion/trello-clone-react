@@ -1,10 +1,9 @@
 const path = require('path');
 const cleanWebpackPlugin = require('clean-webpack-plugin');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-
-  mode: 'development',
 
   entry: './src/index.tsx',
 
@@ -15,6 +14,12 @@ module.exports = {
 
   devtool: 'inline-source-map',
 
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    port: 9001,
+    open: true,
+  },
+
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
@@ -24,13 +29,20 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       }
     ]
   },
 
   plugins: [
+
     new cleanWebpackPlugin(['dist']),
+
+    new htmlWebpackPlugin({
+      title: 'React Trello Clone',
+      template: './src/index.html',
+    }),
+
   ],
 
 };
