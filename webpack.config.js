@@ -5,17 +5,20 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
-  entry: './src/index.tsx',
+  entry: {
+    app: './src/index.tsx',
+    pg: './playground/pg.tsx',
+  },
 
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
   },
 
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, '/dist'),
     port: 9001,
     open: true,
   },
@@ -27,12 +30,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
+        test: /.*\.tsx?$/,
+        use: [
+          {
+            loader: 'ts-loader',
+          },
+          {
+            loader: 'tslint-loader',
+            options: {
+              emitErrors: true,
+              typeCheck: true,
+            }
+          },
+        ],
         exclude: /node_modules/,
       }
     ]
   },
+
+
 
   plugins: [
 
@@ -40,7 +56,16 @@ module.exports = {
 
     new htmlWebpackPlugin({
       title: 'React Trello Clone',
-      template: './src/index.html',
+      template: './template.html',
+      filename: 'index.html',
+      chunks: ['app'],
+    }),
+
+    new htmlWebpackPlugin({
+      title: 'Playground',
+      template: './template.html',
+      filename: 'pg.html',
+      chunks: ['pg'],
     }),
 
   ],

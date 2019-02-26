@@ -1,24 +1,27 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "esnext",
+    "moduleResolution": "node",
     "jsx": "react",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "sourceMap": true,
     "strict": true,
-    "lib": [
-      "dom",
-      "es2015"
-    ],
     "newLine": "LF",
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "esModuleInterop": true,
-    "outDir": "./dist/",
     "noImplicitAny": true,
     "allowJs": true,
+    "noEmitOnError": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "playground/**/*"
   ],
   "exclude": [
     "node_modules",

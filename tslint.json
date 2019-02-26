@@ -1,9 +1,20 @@
 {
-    "defaultSeverity": "error",
     "extends": [
         "tslint:recommended",
         "tslint-react",
         "tslint-config-prettier"
     ],
-    "rules": {}
+    "rules": {
+        "interface-over-type-literal": false,
+        "no-any": true,
+        "no-magic-numbers": true,
+        "typedef": [
+            true,
+            "call-signature",
+            "arrow-call-signature",
+            "property-declaration"
+        ],
+        "object-literal-sort-keys": false,
+        "ordered-imports": false
+    }
 }
