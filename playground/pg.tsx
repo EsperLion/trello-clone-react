@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { TodoListClass, TodoListFunc } from '../src/test-components';
+import { TodoListClass, TodoListFunc } from './test-components';
 
 ReactDOM.render(
   <div>

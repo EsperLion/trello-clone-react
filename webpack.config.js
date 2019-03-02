@@ -1,9 +1,10 @@
 const path = require('path');
 const cleanWebpackPlugin = require('clean-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
-module.exports = {
+module.exports = (env, argv) => ({
 
   entry: {
     app: './src/index.tsx',
@@ -29,6 +30,7 @@ module.exports = {
 
   module: {
     rules: [
+
       {
         test: /.*\.tsx?$/,
         use: [
@@ -44,8 +46,24 @@ module.exports = {
           },
         ],
         exclude: /node_modules/,
-      }
-    ]
+      },
+
+      {
+        test: /\.(sc|c)ss$/,
+        use: [
+          argv.mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            }
+          },
+          'postcss-loader',
+          'sass-loader'
+        ],
+      },
+
+    ],
   },
 
 
@@ -53,6 +71,10 @@ module.exports = {
   plugins: [
 
     new cleanWebpackPlugin(['dist']),
+
+    new MiniCssExtractPlugin({
+      filename: argv.mode === 'development' ? '[name].css' : '[name].[hash].css',
+    }),
 
     new htmlWebpackPlugin({
       title: 'React Trello Clone',
@@ -70,4 +92,4 @@ module.exports = {
 
   ],
 
-};
+});
