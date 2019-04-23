@@ -1,0 +1,22 @@
+$swatches: (
+  primary: (
+    light: #63a4ff,
+    default: #1976d2,
+    dark: #004ba0,
+  ),
+  secondary: (
+    light: #ff5c8d,
+    default: #d81b60,
+    dark: #a00037,
+  ),
+  background: #eee,
+  surface: #fff,
+  error: #b00200,
+  text: (
+    onPrimary: #fff,
+    onSecondary: #fff,
+    onBackground: #000,
+    onSurface: #000,
+    onError: #fff,
+  )
+);

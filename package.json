@@ -22,10 +22,12 @@
   },
   "homepage": "https://github.com/EsperLion/trello-clone-react#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
     "autoprefixer": "^9.4.9",
@@ -37,7 +39,6 @@
     "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
     "postcss-scss": "^2.0.0",
-    "prettier": "1.16.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",

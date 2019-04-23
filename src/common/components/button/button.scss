@@ -1,0 +1,25 @@
+@import '../../styles/default/swatches.scss';
+@import '../../styles/default/typography.scss';
+
+.button {
+  padding: 0 16px;
+  height: 36px;
+  font-size: map-get($typography, 'button');
+  text-transform: uppercase;
+
+  &.default: {
+
+  }
+
+  &.primary {
+    color: map-get($swatches, 'text', 'onPrimary');
+    background: map-get($swatches, 'primary', 'default');
+  }
+
+  &.secondary {
+
+
+
+  }
+
+}
